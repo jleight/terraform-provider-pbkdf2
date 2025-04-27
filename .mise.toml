@@ -1,0 +1,14 @@
+[tools]
+go = "latest"
+terraform = "latest"
+
+[tasks.install]
+run = "go install"
+
+[tasks.test]
+run = "terraform plan"
+dir = "examples/test"
+
+[tasks.generate]
+run = "go generate ./..."
+dir = "tools"
