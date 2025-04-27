@@ -123,7 +123,7 @@ func (d *KeyDataSource) Read(
 	} else {
 		salt = make([]byte, base64.StdEncoding.DecodedLen(len(salt64)))
 
-		_, err := base64.StdEncoding.Decode(
+		n, err := base64.StdEncoding.Decode(
 			salt,
 			[]byte(salt64),
 		)
@@ -134,6 +134,8 @@ func (d *KeyDataSource) Read(
 			)
 			return
 		}
+
+		salt = salt[:n]
 	}
 
 	iterations := int(data.Iterations.ValueInt32())
