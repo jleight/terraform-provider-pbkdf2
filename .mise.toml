@@ -4,10 +4,20 @@ terraform = "latest"
 
 [tasks.install]
 run = "go install"
+sources = ["go.sum", "internal/**/*.go"]
+outputs = { auto = true }
 
-[tasks.test]
+[tasks."test:init"]
+run = ["rm -rf .terraform .terraform.lock.hcl", "terraform init"]
+dir = "examples/test"
+depends = ["install"]
+sources = ["go.sum", "internal/**/*.go"]
+outputs = { auto = true }
+
+[tasks."test:plan"]
 run = "terraform plan"
 dir = "examples/test"
+depends = ["test:init"]
 
 [tasks.generate]
 run = "go generate ./..."
