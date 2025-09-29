@@ -3,7 +3,7 @@ module github.com/jleight/terraform-provider-pbkdf2
 go 1.24.2
 
 require (
-	github.com/hashicorp/terraform-plugin-framework v1.16.0
+	github.com/hashicorp/terraform-plugin-framework v1.16.1
 	golang.org/x/crypto v0.42.0
 )
 
